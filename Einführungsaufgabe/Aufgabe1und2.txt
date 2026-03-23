@@ -1,0 +1,27 @@
+//Aufgabe 1
+
+//b) 
+//In einer .h Datei werden Klassen, Variablen ,Makros, Typdefinitionen und Funktionen deklariert.
+//Sie beschreibt was existiert, aber nicht wie es funktioniert.
+//In der .c Datei hingegen werden sie implementiert. 
+//.c Datein werden unabhängig von den anderen Kompiliert.
+//Möchte man nun aber etwas aus einer anderen Klasse  A aus einer anderen .c Datei nutzen, so ist es nicht ratsam per copy und paste die Klasse einfach rüber zu Kopieren.
+//Das hätte zum Beispiel zur Folge, dass wenn in der ursprünglichen Klasse A etwas geändert worden wäre, dass die Änderung nicht in der neuen .c Datei wäre.
+//Deshalb includiert man die .h Datei it #include "<filepath>". So wird alles was in der .h Datei deklariert und in der .c implementiert ist nutzbar.
+
+//d)
+//Tabs stehen vor jedem Befehl der zu einer Regel gehört.
+
+//e)
+//%.o Muster gilt für alle .o Dateien
+//%.c Die zugehörige .c Datei 
+//$(DEPS) Zusätliche Abhängigkeiten
+//.o Dateien hängen von .c Datei und Header ab. Wenn sich eine ändert wird neu kompiliert.
+
+//Aufgabe 2
+
+//b)
+//man <sektion> <funktion>
+//Sektionen: 1 Shell-Befehle, 2 System Calls, 3 Standard-Bibliotheksfunktionen, 4 Gerätedateien, 5 Dateiformate
+//man -k open  zeigt alle Seiten die "open" heißen
+
