@@ -1,0 +1,24 @@
+Was ist die Ausgabe des Programms und wieso?
+fork() erzeugt einen neuen Prozess. 
+Sowohl der Parentprocess, als auch der Childprocess führen dann den code einmal aus.
+Deshalb steht in der Konsole:
+Hello! 
+Hello!"
+
+Modifizieren Sie das Programm so, dass der fork()-Aufruf drei Mal direkt hintereinander im
+Programm steht.
+Was ist nun die Ausgabe des Programms? Erklären Sie
+Jedes fork() erstellt einen neuen Prozess von dem Code unterhalb.
+Nach dem ersten fork() aufruf gibt es insgesammt zwei Prozesse.
+Nach dem zweiten gibt es dann vier Prozesse. 
+Nach dem dritten dann acht.
+Deshalb ist die Ausgabe:
+
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
