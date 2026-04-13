@@ -1,0 +1,4 @@
+Durch den Rückgabewert von fork() ist pid beim Elternprozess die Prozess-ID des Kindprozesses, beim Kindprozess ist pid 0. Dadurch kann mit if-else bestimmter Code für Eltern- und Kindprozesse ausgeführt werden.
+getpid() liefert die ID des laufenden Prozesses
+getppid liefert die, des Elternprozesses
+wait(NULL) wartet auf einen beliebigen Kindprozess, der terminiert, und gibt danach dessen pid zurück. Wurde auf keinen gewartet, stattdessen -1. Statt NULL kann eine Speicheradresse angegeben, bei der Informationen zum Kindprozess gespeichert werden.
