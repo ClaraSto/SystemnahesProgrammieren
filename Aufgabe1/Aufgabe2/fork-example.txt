@@ -1,0 +1,13 @@
+Wie wird die Ausführung unterschiedlichen Programmcodes im Kind- und Elternprozess er-
+reicht?
+durch die Abfrage:  if (pid == 0). Ist es true bedeuted dass dass es ein Childprozess ist.
+
+Was bewerkstelligen die System Calls getpid(), getppid() und wait()?
+getpid(): gibt die Id des aktuellen Prozesses
+getppid(): gibt die Id des Parentprozesses des aktuellen Prozesses
+wait(): unterbricht Elternprozess bis die Ausführung des Childprozess beendet ist
+
+Was gibt das Argument und was der Rückgabewert von wait() an?
+Das Argument &status ist ein Zeiger auf ein Integer. Er gibt an wie das Kind beendet wurde.
+Man kann NULL eingeben, wenn man keinen Exitstatus braucht.
+Bei Erfolg wird die PID des Kindprozesses zurückgegeben. Bei einem Fehlerist es -1.
