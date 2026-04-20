@@ -14,40 +14,59 @@
 #include "hittable.h"
 #include "material.h"
 
+#include <sys/mman.h>
+#include <sys/wait.h>
+
+
 
 class camera {
   public:
-    double aspect_ratio      = 1.0;  // Ratio of image width over height
-    int    image_width       = 100;  // Rendered image width in pixel count
-    int    samples_per_pixel = 10;   // Count of random samples for each pixel
-    int    max_depth         = 10;   // Maximum number of ray bounces into scene
+    double aspect_ratio      = 1.0;
+    int    image_width       = 100;
+    int    samples_per_pixel = 10;
+    int    max_depth         = 10;
 
-    double vfov     = 90;              // Vertical view angle (field of view)
-    point3 lookfrom = point3(0,0,0);   // Point camera is looking from
-    point3 lookat   = point3(0,0,-1);  // Point camera is looking at
-    vec3   vup      = vec3(0,1,0);     // Camera-relative "up" direction
+    double vfov     = 90;
+    point3 lookfrom = point3(0,0,0);
+    point3 lookat   = point3(0,0,-1);
+    vec3   vup      = vec3(0,1,0);
 
-    double defocus_angle = 0;  // Variation angle of rays through each pixel
-    double focus_dist = 10;    // Distance from camera lookfrom point to plane of perfect focus
+    double defocus_angle = 0;
+    double focus_dist    = 10;
+
+    void renderLine(int j, color* buf, const hittable& world) {
+        for (int i = 0; i < image_width; i++) {
+            color c(0,0,0);
+            for (int s = 0; s < samples_per_pixel; s++)
+                c += ray_color(get_ray(i, j), max_depth, world);
+            buf[j * image_width + i] = pixel_samples_scale * c;
+        }
+    }
 
     void render(const hittable& world) {
         initialize();
 
-        std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+        int n = 4;
+        int image_size_in_bytes = sizeof(color) * image_width * image_height;
+        color* rendered_image = (color*) mmap(nullptr, image_size_in_bytes,
+            PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 
-        for (int j = 0; j < image_height; j++) {
-            std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
-            for (int i = 0; i < image_width; i++) {
-                color pixel_color(0,0,0);
-                for (int sample = 0; sample < samples_per_pixel; sample++) {
-                    ray r = get_ray(i, j);
-                    pixel_color += ray_color(r, max_depth, world);
-                }
-                write_color(std::cout, pixel_samples_scale * pixel_color);
+        for (int p = 0; p < n; p++) {
+            if (fork() == 0) {
+                for (int j = image_height * p / n; j < image_height * (p+1) / n; j++)
+                    renderLine(j, rendered_image, world);
+                exit(0);
             }
         }
 
-        std::clog << "\rDone.                 \n";
+        for (int p = 0; p < n; p++) wait(nullptr);
+
+        std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+for (int j = 0; j < image_height; j++)
+    for (int i = 0; i < image_width; i++) {
+        write_color(std::cout, rendered_image[j * image_width + i]);
+        write_color(std::cerr, rendered_image[j * image_width + i]);
+    }
     }
 
   private:
