@@ -1,0 +1,2 @@
+3 a) Die Prozesse werden durchnummeriert und jeder Prozess berechnet die Zeilen mit seiner Prozessnummer + Anzahl Prozesse
+
