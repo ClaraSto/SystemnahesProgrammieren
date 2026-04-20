@@ -36,7 +36,7 @@ class camera {
 
     void renderLine(int j, color* buf, const hittable& world) {
         for (int i = 0; i < image_width; i++) {
-            color c(0,0,0);
+            color c(0,0,0);gi
             for (int s = 0; s < samples_per_pixel; s++)
                 c += ray_color(get_ray(i, j), max_depth, world);
             buf[j * image_width + i] = pixel_samples_scale * c;
@@ -61,12 +61,13 @@ class camera {
 
         for (int p = 0; p < n; p++) wait(nullptr);
 
-        std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
-for (int j = 0; j < image_height; j++)
+std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+ffor (int j = 0; j < image_height; j++)
     for (int i = 0; i < image_width; i++) {
         write_color(std::cout, rendered_image[j * image_width + i]);
-        write_color(std::cerr, rendered_image[j * image_width + i]);
+        write_color(std::clog, rendered_image[j * image_width + i]);
     }
+std::clog << "Done.\n";
     }
 
   private:

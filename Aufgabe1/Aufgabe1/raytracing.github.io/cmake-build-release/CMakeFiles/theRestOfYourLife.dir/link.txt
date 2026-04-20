@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/theRestOfYourLife.dir/link.d CMakeFiles/theRestOfYourLife.dir/src/TheRestOfYourLife/main.cc.o -o theRestOfYourLife

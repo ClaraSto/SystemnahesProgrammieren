@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/estimate_halfway.dir/link.d CMakeFiles/estimate_halfway.dir/src/TheRestOfYourLife/estimate_halfway.cc.o -o estimate_halfway

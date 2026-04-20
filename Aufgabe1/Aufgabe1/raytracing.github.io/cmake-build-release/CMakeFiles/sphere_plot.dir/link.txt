@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/sphere_plot.dir/link.d CMakeFiles/sphere_plot.dir/src/TheRestOfYourLife/sphere_plot.cc.o -o sphere_plot
