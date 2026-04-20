@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/sphere_importance.dir/link.d CMakeFiles/sphere_importance.dir/src/TheRestOfYourLife/sphere_importance.cc.o -o sphere_importance
