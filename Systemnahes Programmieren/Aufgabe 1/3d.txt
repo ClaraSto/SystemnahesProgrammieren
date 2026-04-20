@@ -1,0 +1,6 @@
+3 d) 
+Parallelisiert: 279,256343 Sekunden
+Original: 1428,981921 Sekunden
+
+Beim parallelen Raytracer haben nicht alle Prozesse gleich viel Arbeit, manche haben einfachere Berechnungen und sind dementsprechend schneller fertig. Dadurch wird am Ende nicht mehr alle verfügbare Rechenleistung genutzt. Man könnte die Arbeit gleichmäßiger verteilen, indem man die einzelnen Pakete verkleinert und die Prozesse nicht mehr ganze Zeilen, sondern kleinere Bereiche berechnen lässt.
+
