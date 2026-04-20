@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/pi.dir/link.d CMakeFiles/pi.dir/src/TheRestOfYourLife/pi.cc.o -o pi
